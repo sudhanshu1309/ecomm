@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Base from "../core/Base";
 import { Link } from "react-router-dom";
 import { isAuthenticated } from "../auth/helper";
-import { getCategories } from "./helper/adminapicall";
+import { getCategories, deleteCategory } from "./helper/adminapicall";
 
 const ManageCategories = () => {
   const [categories, setCategories] = useState([]);
@@ -21,6 +21,26 @@ const ManageCategories = () => {
   useEffect(() => {
     preload();
   }, []);
+
+  const deleteThisCategory = (categoryId) => {
+    deleteCategory(categoryId, user._id, token).then((data) => {
+      if (data.error) {
+        console.log(data.error);
+      } else {
+        preload();
+      }
+    });
+  };
+
+  // const successMessage = () => (
+  //   <div
+  //     class="alert alert-success mt-3"
+  //     style={{ display: updatedProduct ? "" : "none" }}
+  //   >
+  //     <h4>{updatedProduct} updated successfully</h4>
+  //   </div>
+  // );
+
   return (
     <Base title="Welcome admin" description="Manage categories here">
       <h2 className="mb-4">All products:</h2>
@@ -40,13 +60,18 @@ const ManageCategories = () => {
                 <div className="col-4">
                   <Link
                     className="btn btn-success"
-                    to={`/admin/categories`}  //todo here
+                    to={`/admin/category/:${category._id}/:${user._id}`}
                   >
                     <span className="">Update</span>
                   </Link>
                 </div>
                 <div className="col-4">
-                  <button onClick={() => {}} className="btn btn-danger">
+                  <button
+                    onClick={() => {
+                      deleteThisCategory(category._id);
+                    }}
+                    className="btn btn-danger"
+                  >
                     Delete
                   </button>
                 </div>

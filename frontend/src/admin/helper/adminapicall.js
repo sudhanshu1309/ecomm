@@ -2,6 +2,8 @@
 import API from "../../backend";
 
 //category calls
+
+//create category
 export const createCategory = (userId, token, category) => {
   return fetch(`${API}/category/create/${userId}`, {
     method: "POST",
@@ -28,6 +30,24 @@ export const getCategories = () => {
     })
     .catch((err) => console.log(err));
 };
+
+//delete category
+export const deleteCategory = (categoryId, userId, token) => {
+  return fetch(`${API}/category/${categoryId}/${userId}`, {
+    method: "DELETE",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
+
+
+
 
 //products calls
 
