@@ -81,7 +81,7 @@ const UpdateProduct = ({ match }) => {
 
     updateProduct(match.params.productId, user._id, token, formData)
       .then((data) => {
-        if (Date.error) {
+        if (data.error) {
           setValues({ ...values, error: data.error });
         } else {
           setValues({

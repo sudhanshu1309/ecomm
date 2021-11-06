@@ -46,8 +46,21 @@ export const deleteCategory = (categoryId, userId, token) => {
     .catch((err) => console.log(err));
 };
 
-
-
+//update category
+export const updateCategory = (categoryId, userId, token, category) => {
+  return fetch(`${API}/category/${categoryId}/${userId}`, {
+    method: "PUT",
+    headers: {
+      Accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify(category),
+  })
+    .then((response) => {
+      return response.json();
+    })
+    .catch((err) => console.log(err));
+};
 
 //products calls
 
