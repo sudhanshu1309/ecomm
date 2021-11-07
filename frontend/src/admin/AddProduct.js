@@ -82,7 +82,7 @@ const AddProduct = () => {
 
   const successMessage = () => (
     <div
-      class="alert alert-success mt-3"
+      className="alert alert-success mt-3"
       style={{ display: createdProduct ? "" : "none" }}
     >
       <h4>{createdProduct} created successfully</h4>
@@ -91,7 +91,7 @@ const AddProduct = () => {
 
   const errorMessage = () => (
     <div
-      class="alert alert-danger mt-3"
+      className="alert alert-danger mt-3"
       style={{ display: createdProduct ? "" : "none" }}
     >
       <h4>{createdProduct} creation failed!!!</h4>
@@ -182,8 +182,8 @@ const AddProduct = () => {
       <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3">
         Admin Home
       </Link>
-      <div class="row bg-dark text-white rounded">
-        <div class="col-md-8 offset-md-2">
+      <div className="row bg-dark text-white rounded">
+        <div className="col-md-8 offset-md-2">
           {successMessage()}
           {errorMessage()}
           {createProductForm()}

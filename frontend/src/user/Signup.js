@@ -41,11 +41,11 @@ const Signup = () => {
 
   const signUpForm = () => {
     return (
-      <div class="row">
-        <div class="col md-6 offset-sm-3 text-left">
+      <div className="row">
+        <div className="col md-6 offset-sm-3 text-left">
           <form>
-            <div class="form-group">
-              <lable class="text-white">Name</lable>
+            <div className="form-group">
+              <lable className="text-white">Name</lable>
               <input
                 className="form-control"
                 onChange={handleChange("name")}
@@ -53,8 +53,8 @@ const Signup = () => {
                 value={name}
               />
             </div>
-            <div class="form-group">
-              <lable class="text-white">Email</lable>
+            <div className="form-group">
+              <lable className="text-white">Email</lable>
               <input
                 className="form-control"
                 onChange={handleChange("email")}
@@ -62,8 +62,8 @@ const Signup = () => {
                 value={email}
               />
             </div>
-            <div class="form-group">
-              <lable class="text-white">Password</lable>
+            <div className="form-group">
+              <lable className="text-white">Password</lable>
               <input
                 className="form-control"
                 onChange={handleChange("password")}
@@ -71,7 +71,7 @@ const Signup = () => {
                 value={password}
               />
             </div>
-            <button onClick={onSubmit} class="btn btn-success btn-block">
+            <button onClick={onSubmit} className="btn btn-success btn-block">
               Submit
             </button>
           </form>
@@ -82,10 +82,10 @@ const Signup = () => {
 
   const errorMessage = () => {
     return (
-      <div class="row">
-        <div class="col md-6 offset-sm-3 text-left">
+      <div className="row">
+        <div className="col md-6 offset-sm-3 text-left">
           <div
-            class="alert alert-success"
+            className="alert alert-success"
             style={{ display: error ? "" : "none" }}
           >
             {error}
@@ -97,10 +97,10 @@ const Signup = () => {
 
   const successMessage = () => {
     return (
-      <div class="row">
-        <div class="col md-6 offset-sm-3 text-left">
+      <div className="row">
+        <div className="col md-6 offset-sm-3 text-left">
           <div
-            class="alert alert-danger"
+            className="alert alert-danger"
             style={{ display: success ? "" : "none" }}
           >
             New account created successfully!{" "}
@@ -116,7 +116,7 @@ const Signup = () => {
       {successMessage()}
       {errorMessage()}
       {signUpForm()}
-      <p class="text-white text-center">{JSON.stringify(values)}</p>
+      <p className="text-white text-center">{JSON.stringify(values)}</p>
     </Base>
   );
 };

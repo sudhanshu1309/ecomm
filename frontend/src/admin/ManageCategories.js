@@ -34,7 +34,7 @@ const ManageCategories = () => {
 
   // const successMessage = () => (
   //   <div
-  //     class="alert alert-success mt-3"
+  //     className="alert alert-success mt-3"
   //     style={{ display: updatedProduct ? "" : "none" }}
   //   >
   //     <h4>{updatedProduct} updated successfully</h4>

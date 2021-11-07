@@ -47,17 +47,17 @@ const AdminDashboard = () => {
     return (
       <div className="card mb-4">
         <h4 className="card-header">Admin Information</h4>
-        <ul class="list-group">
-          <li class="list-group-item">
-            <span class="badge badge-success mr-2 text-danger">Name:</span>{" "}
+        <ul className="list-group">
+          <li className="list-group-item">
+            <span className="badge badge-success mr-2 text-danger">Name:</span>{" "}
             {name}
           </li>
-          <li class="list-group-item">
-            <span class="badge badge-success mr-2 text-danger">Email:</span>
+          <li className="list-group-item">
+            <span className="badge badge-success mr-2 text-danger">Email:</span>
             {email}
           </li>
-          <li class="list-group-item">
-            <span class="badge badge-success mr-2 text-danger">Role:</span>
+          <li className="list-group-item">
+            <span className="badge badge-success mr-2 text-danger">Role:</span>
             {role ? "Admin" : "User"}
           </li>
         </ul>

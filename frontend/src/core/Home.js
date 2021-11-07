@@ -8,14 +8,14 @@ const Home = () => {
   return (
     <Base title="Home Page" description="Welcome to the t-shirt store">
       <div className="row">
-        <div class="col-4">
-          <button class="btn btn-success">Test</button>
+        <div className="col-4">
+          <button className="btn btn-success">Test</button>
         </div>
-        <div class="col-4">
-          <button class="btn btn-success">Test</button>
+        <div className="col-4">
+          <button className="btn btn-success">Test</button>
         </div>
-        <div class="col-4">
-          <button class="btn btn-success">Test</button>
+        <div className="col-4">
+          <button className="btn btn-success">Test</button>
         </div>
       </div>
     </Base>

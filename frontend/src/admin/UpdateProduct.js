@@ -112,7 +112,7 @@ const UpdateProduct = ({ match }) => {
 
   const successMessage = () => (
     <div
-      class="alert alert-success mt-3"
+      className="alert alert-success mt-3"
       style={{ display: success ? "" : "none" }}
     >
       <h4>{updatedProduct} updated successfully</h4>
@@ -120,7 +120,7 @@ const UpdateProduct = ({ match }) => {
   );
 
   const errorMessage = () => (
-    <div class="alert alert-danger mt-3" style={{ display: err ? "" : "none" }}>
+    <div className="alert alert-danger mt-3" style={{ display: err ? "" : "none" }}>
       <h4>{updatedProduct} updation failed!!!</h4>
     </div>
   );
@@ -209,8 +209,8 @@ const UpdateProduct = ({ match }) => {
       <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3">
         Admin Home
       </Link>
-      <div class="row bg-dark text-white rounded">
-        <div class="col-md-8 offset-md-2">
+      <div className="row bg-dark text-white rounded">
+        <div className="col-md-8 offset-md-2">
           {successMessage()}
           {errorMessage()}
           {createProductForm()}
