@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from "react";
 import Base from "../core/Base";
 import { Link } from "react-router-dom";
-
 import { getCategories, updateCategory } from "./helper/adminapicall";
 import { isAuthenticated } from "../auth/helper";
 
 const UpdateCategory = ({ match }) => {
-  const { user, token } = isAuthenticated();
-  const [error, setError] = useState(false);
+  const [name, setName] = useState("");
+  const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  //   const [name, setName] = useState("");
-  const [values, setValues] = useState({
-    name: "",
-  });
-  const { name } = values;
+
+  const { user, token } = isAuthenticated();
 
   const preload = (categoryId) => {
     getCategories(categoryId).then((data) => {
       if (data.error) {
-        setValues({ ...values, error: data.error });
+        setError(data.error);
       } else {
-        setValues({
-          ...values,
-          name: data.name,
-        });
+        setName(data.name);
       }
     });
   };
+
   useEffect(() => {
     preload(match.params.categoryId);
   }, []);
@@ -41,23 +35,22 @@ const UpdateCategory = ({ match }) => {
 
   const handleChange = (event) => {
     setError("");
-    setValues({ ...values, name: event.target.value });
+    setName(event.target.value);
   };
 
   const onSubmit = (event) => {
     event.preventDefault();
     setError("");
     setSuccess(false);
+
     //backend request fired
-    updateCategory(match.params.categoryId, user._id, token, {name}).then(
+    updateCategory(match.params.categoryId, user._id, token, { name }).then(
       (data) => {
         if (data.error) {
           setError(data.error);
         } else {
-          setValues({
-            ...values,
-            name: "",
-          });
+          setName("");
+          setSuccess(true);
         }
       }
     );
@@ -97,8 +90,8 @@ const UpdateCategory = ({ match }) => {
 
   return (
     <Base
-      title="Update Category"
-      description="Update category"
+      title="Welcome Admin"
+      description="Update category here"
       className="container bg-info p-4"
     >
       <div className="row bg-white rounded">

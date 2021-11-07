@@ -20,6 +20,8 @@ const UpdateProduct = ({ match }) => {
     category: "",
     loading: false,
     error: "",
+    err: "",
+    success: false,
     updatedProduct: "",
     getaRedirect: false,
     formData: "",
@@ -34,6 +36,8 @@ const UpdateProduct = ({ match }) => {
     category,
     loading,
     error,
+    success,
+    err,
     updatedProduct,
     getaRedirect,
     formData,
@@ -49,7 +53,7 @@ const UpdateProduct = ({ match }) => {
           name: data.name,
           description: data.description,
           price: data.price,
-          category: data.category._id,
+          // category: data.category._id,
           stock: data.stock,
           formData: new FormData(),
         });
@@ -82,7 +86,7 @@ const UpdateProduct = ({ match }) => {
     updateProduct(match.params.productId, user._id, token, formData)
       .then((data) => {
         if (data.error) {
-          setValues({ ...values, error: data.error });
+          setValues({ ...values, err: data.error });
         } else {
           setValues({
             ...values,
@@ -90,6 +94,7 @@ const UpdateProduct = ({ match }) => {
             description: "",
             price: "",
             photo: "",
+            success: true,
             stock: "",
             loading: false,
             updatedProduct: data.name,
@@ -108,18 +113,14 @@ const UpdateProduct = ({ match }) => {
   const successMessage = () => (
     <div
       class="alert alert-success mt-3"
-      style={{ display: updatedProduct ? "" : "none" }}
+      style={{ display: success ? "" : "none" }}
     >
       <h4>{updatedProduct} updated successfully</h4>
     </div>
   );
 
-  //BUG here
   const errorMessage = () => (
-    <div
-      class="alert alert-danger mt-3"
-      style={{ display: updatedProduct ? "none" : "" }}
-    >
+    <div class="alert alert-danger mt-3" style={{ display: err ? "" : "none" }}>
       <h4>{updatedProduct} updation failed!!!</h4>
     </div>
   );

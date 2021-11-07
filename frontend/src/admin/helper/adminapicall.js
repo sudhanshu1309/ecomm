@@ -33,6 +33,7 @@ export const getCategories = () => {
 
 //delete category
 export const deleteCategory = (categoryId, userId, token) => {
+  console.log(categoryId);
   return fetch(`${API}/category/${categoryId}/${userId}`, {
     method: "DELETE",
     headers: {
@@ -48,15 +49,21 @@ export const deleteCategory = (categoryId, userId, token) => {
 
 //update category
 export const updateCategory = (categoryId, userId, token, category) => {
+  console.log(categoryId);
+  console.log(userId);
+  console.log(token);
+  console.log(category);
   return fetch(`${API}/category/${categoryId}/${userId}`, {
     method: "PUT",
     headers: {
       Accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(category),
   })
     .then((response) => {
+      console.log(response);
       return response.json();
     })
     .catch((err) => console.log(err));
@@ -119,6 +126,7 @@ export const getproduct = (productId) => {
 
 //update a product
 export const updateProduct = (productId, userId, token, product) => {
+  console.log(productId);
   return fetch(`${API}/product/${productId}/${userId}`, {
     method: "PUT",
     headers: {
