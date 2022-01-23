@@ -10,9 +10,10 @@ const Signup = () => {
     password: "",
     error: "",
     success: false,
+    loading: false,
   });
 
-  const { name, email, password, error, success } = values;
+  const { name, email, password, error, success, loading } = values;
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -20,11 +21,11 @@ const Signup = () => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    setValues({ ...values, error: false });
+    setValues({ ...values, error: false, loading:true });
     signup({ name, email, password })
       .then((data) => {
         if (data.error) {
-          setValues({ ...values, error: data.error, success: false });
+          setValues({ ...values, error: data.error, success: false, loading:false });
         } else {
           setValues({
             ...values,
@@ -47,7 +48,7 @@ const Signup = () => {
             <div className="form-group">
               <lable className="text-white">Name</lable>
               <input
-                className="form-control"
+                className="form-control my-1"
                 onChange={handleChange("name")}
                 type="text"
                 value={name}
@@ -56,7 +57,7 @@ const Signup = () => {
             <div className="form-group">
               <lable className="text-white">Email</lable>
               <input
-                className="form-control"
+                className="form-control my-1"
                 onChange={handleChange("email")}
                 type="email"
                 value={email}
@@ -65,13 +66,16 @@ const Signup = () => {
             <div className="form-group">
               <lable className="text-white">Password</lable>
               <input
-                className="form-control"
+                className="form-control my-1"
                 onChange={handleChange("password")}
                 type="password"
                 value={password}
               />
             </div>
-            <button onClick={onSubmit} className="btn btn-success btn-block">
+            <button
+              onClick={onSubmit}
+              className="btn btn-success btn-block rounded my-1"
+            >
               Submit
             </button>
           </form>
@@ -110,13 +114,27 @@ const Signup = () => {
       </div>
     );
   };
+  const loadingMessage = () => {
+    return (
+      loading && (
+        <div className="row">
+          <div className="col md-6 offset-sm-3 text-left">
+            <div className="alert alert-info">
+              <h2>Loading...</h2>
+            </div>
+          </div>
+        </div>
+      )
+    );
+  };
 
   return (
-    <Base title="Signup Page" description="A page for user to signup!">
+    <Base title="Signup" description="Create a new account">
+      {loadingMessage()}
       {successMessage()}
       {errorMessage()}
       {signUpForm()}
-      <p className="text-white text-center">{JSON.stringify(values)}</p>
+      {/* <p className="text-white text-center">{JSON.stringify(values)}</p> */}
     </Base>
   );
 };

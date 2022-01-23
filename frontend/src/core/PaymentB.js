@@ -44,7 +44,7 @@ const PaymentB = ({ products, setReload = (f) => f, reload = undefined }) => {
             </button>
           </div>
         ) : (
-          <h3>Please LogIn or add something to cart</h3>
+          <h3 className="text-dark">Please add something to cart</h3>
         )}
       </div>
     );
@@ -96,7 +96,7 @@ const PaymentB = ({ products, setReload = (f) => f, reload = undefined }) => {
 
   return (
     <div>
-      <h3>Your bill is {getAmount()} $</h3>
+      <h3 className="text-dark">Your bill is {getAmount()} $</h3>
       {showBTDropIn()}
     </div>
   );

@@ -6,8 +6,8 @@ import { signin, isAuthenticated, authenticate } from "../auth/helper";
 
 const Signin = () => {
   const [values, setValues] = useState({
-    email: "user@email.com",
-    password: "12345",
+    email: "",
+    password: "",
     error: "",
     loading: false,
     didRedirect: false,
@@ -56,8 +56,12 @@ const Signin = () => {
   const loadingMessage = () => {
     return (
       loading && (
-        <div className="alert alert-info">
-          <h2>Loading...</h2>
+        <div className="row">
+          <div className="col md-6 offset-sm-3 text-left">
+            <div className="alert alert-info">
+              <h2>Loading...</h2>
+            </div>
+          </div>
         </div>
       )
     );
@@ -88,8 +92,9 @@ const Signin = () => {
               <input
                 onChange={handleChange("email")}
                 value={email}
-                className="form-control"
+                className="form-control my-1"
                 type="email"
+                required
               />
             </div>
             <div className="form-group">
@@ -97,11 +102,15 @@ const Signin = () => {
               <input
                 onChange={handleChange("password")}
                 value={password}
-                className="form-control"
+                className="form-control my-1"
                 type="password"
+                required
               />
             </div>
-            <button onClick={onSubmit} className="btn btn-success btn-block">
+            <button
+              onClick={onSubmit}
+              className="btn btn-success btn-block my-2 rounded"
+            >
               Submit
             </button>
           </form>
@@ -111,12 +120,12 @@ const Signin = () => {
   };
 
   return (
-    <Base title="Signin Page" description="A page for user to signin!">
+    <Base title="Signin" description="Login using username and password">
       {loadingMessage()}
       {errorMessage()}
       {signInForm()}
       {performRedirect()}
-      <p className="text-white text-center">{JSON.stringify(values)}</p>
+      {/* <p className="text-white text-center">{JSON.stringify(values)}</p> */}
     </Base>
   );
 };

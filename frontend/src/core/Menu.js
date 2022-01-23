@@ -13,16 +13,20 @@ const activeTab = (history, path) => {
 const Menu = ({ history }) => {
   return (
     <div>
-      <ul className="nav nav-tabs bg-dark">
+      <ul className="navbar navbar-light bg-warning">
         <li className="nav-item">
-          <Link style={activeTab(history, "/")} className="nav-link" to="/">
+          <Link
+            style={activeTab(history, "/")}
+            className="nav-link text-info"
+            to="/"
+          >
             Home
           </Link>
         </li>
         <li className="nav-item">
           <Link
             style={activeTab(history, "/cart")}
-            className="nav-link"
+            className="nav-link text-info"
             to="/cart"
           >
             Cart
@@ -32,7 +36,7 @@ const Menu = ({ history }) => {
           <li className="nav-item">
             <Link
               style={activeTab(history, "/user/dashboard")}
-              className="nav-link"
+              className="nav-link text-info"
               to="/user/dashboard"
             >
               Dashboard
@@ -43,7 +47,7 @@ const Menu = ({ history }) => {
           <li className="nav-item">
             <Link
               style={activeTab(history, "/admin/dashboard")}
-              className="nav-link"
+              className="nav-link text-info"
               to="/admin/dashboard"
             >
               A.Dashboard
@@ -55,7 +59,7 @@ const Menu = ({ history }) => {
             <li className="nav-item">
               <Link
                 style={activeTab(history, "/signin")}
-                className="nav-link"
+                className="nav-link text-info"
                 to="/signin"
               >
                 SignIn
@@ -64,7 +68,7 @@ const Menu = ({ history }) => {
             <li className="nav-item">
               <Link
                 style={activeTab(history, "/signup")}
-                className="nav-link"
+                className="nav-link text-info"
                 to="/signup"
               >
                 Signup
@@ -75,7 +79,8 @@ const Menu = ({ history }) => {
         {isAuthenticated() && (
           <li className="nav-item">
             <span
-              className="nav-link text-warning"
+              className="nav-link text-info"
+              style={{cursor:"pointer"}}
               onClick={() => {
                 signout(() => {
                   history.push("/");

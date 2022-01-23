@@ -27,7 +27,7 @@ const UpdateCategory = ({ match }) => {
 
   const goBack = () => (
     <div className="mt-5">
-      <Link className="btn btn-sm btn-success mb-3" to="/admin/dashboard">
+      <Link className="btn btn-sm btn-success mb-3 rounded" to="/admin/dashboard">
         Admin Home
       </Link>
     </div>
@@ -81,7 +81,7 @@ const UpdateCategory = ({ match }) => {
           required
           placeholder="For Ex. Summer"
         />
-        <button onClick={onSubmit} className="btn btn-outline-info">
+        <button onClick={onSubmit} className="btn btn-outline-info rounded">
           Update Category
         </button>
       </div>
@@ -90,8 +90,8 @@ const UpdateCategory = ({ match }) => {
 
   return (
     <Base
-      title="Welcome Admin"
-      description="Update category here"
+      title="Update Category"
+      description="Give a new name"
       className="container bg-info p-4"
     >
       <div className="row bg-white rounded">

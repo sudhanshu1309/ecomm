@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Home from "./core/Home";
 import Signin from "./user/Signin";
 import Signup from "./user/Signup";
@@ -14,15 +14,26 @@ import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
 import UpdateCategory from "./admin/UpdateCategory";
 import Cart from "./core/Cart";
+import Contact from "./core/Contact";
+import PageNotFound from "./core/PageNotFound";
 
 const Routes = () => {
   return (
     <BrowserRouter>
       <Switch>
         <Route exact path="/" component={Home} />
+        <Route exact path="/contact-us" component={Contact} />
+        <Route exact path="/user/contact-us" component={Contact} />
+        <Route exact path="/admin/contact-us" component={Contact} />
+        <Route
+          exact
+          path="/admin/product/update/contact-us"
+          component={Contact}
+        />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/signin" component={Signin} />
-        <Route exact path="/cart" component={Cart} />
+        <Route exact path="/404" component={PageNotFound} />
+        <PrivateRoute exact path="/cart" component={Cart} />
         <PrivateRoute exact path="/user/dashboard" component={UserDashboard} />
         <AdminRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <AdminRoute
@@ -47,6 +58,7 @@ const Routes = () => {
           path="/admin/category/:categoryId/:userId"
           component={UpdateCategory}
         />
+        <Redirect to="/404" />
       </Switch>
     </BrowserRouter>
   );

@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import API from "../backend";
 import "../styles.css";
 import Base from "./Base";
 import Card from "./Card";
@@ -24,14 +23,14 @@ const Home = () => {
   }, []);
 
   return (
-    <Base title="Home Page" description="Welcome to the t-shirt store">
+    <Base title="Home" description="Welcome to the t-shirt store">
       <div className="row text-center">
-        <h1 className="text-white">All of tshirts</h1>
+        <h1 className="text-primary mb-4">t-shirts of your choice</h1>
         <div className="row">
           {products.map((product, index) => {
             return (
-              <div key={index} className="col-2 mb-4">
-                <Card product={product}/>
+              <div key={index} className="col-sm-4 mb-4">
+                <Card product={product} />
               </div>
             );
           })}

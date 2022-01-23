@@ -19,6 +19,7 @@ const AddProduct = () => {
     createdProduct: "",
     getaRedirect: false,
     formData: "",
+    success: false,
   });
 
   const {
@@ -33,6 +34,7 @@ const AddProduct = () => {
     createdProduct,
     getaRedirect,
     formData,
+    success,
   } = values;
 
   const preload = () => {
@@ -56,7 +58,7 @@ const AddProduct = () => {
     setValues({ ...values, error: "", loading: true });
     createaProduct(user._id, token, formData)
       .then((data) => {
-        if (Date.error) {
+        if (data.error) {
           setValues({ ...values, error: data.error });
         } else {
           setValues({
@@ -68,6 +70,7 @@ const AddProduct = () => {
             stock: "",
             loading: false,
             createdProduct: data.name,
+            success: true,
           });
         }
       })
@@ -80,29 +83,23 @@ const AddProduct = () => {
     setValues({ ...values, [name]: value });
   };
 
-  const successMessage = () => (
-    <div
-      className="alert alert-success mt-3"
-      style={{ display: createdProduct ? "" : "none" }}
-    >
-      <h4>{createdProduct} created successfully</h4>
-    </div>
-  );
+  const successMessage = () => {
+    if (success) {
+      return <h4 className="text-success">{createdProduct} created successfully</h4>;
+    }
+  };
 
-  const errorMessage = () => (
-    <div
-      className="alert alert-danger mt-3"
-      style={{ display: createdProduct ? "" : "none" }}
-    >
-      <h4>{createdProduct} creation failed!!!</h4>
-    </div>
-  );
+  const errorMessage = () => {
+    if (error) {
+      return <h4 className="text-danger mt-3">{createdProduct} creation failed!</h4>;
+    }
+  };
 
   const createProductForm = () => (
     <form>
-      <span>Post photo</span>
+      <span className="text-primary">Post photo</span>
       <div className="form-group">
-        <label className="btn btn-block btn-success">
+        <label className="btn btn-block btn-success rounded my-1">
           <input
             onChange={handleChange("photo")}
             type="file"
@@ -112,7 +109,7 @@ const AddProduct = () => {
           />
         </label>
       </div>
-      <div className="form-group">
+      <div className="form-group my-1">
         <input
           onChange={handleChange("name")}
           name="photo"
@@ -121,7 +118,7 @@ const AddProduct = () => {
           value={name}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group my-1">
         <textarea
           onChange={handleChange("description")}
           name="photo"
@@ -130,7 +127,7 @@ const AddProduct = () => {
           value={description}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group my-1">
         <input
           onChange={handleChange("price")}
           type="number"
@@ -139,7 +136,7 @@ const AddProduct = () => {
           value={price}
         />
       </div>
-      <div className="form-group">
+      <div className="form-group my-1">
         <select
           onChange={handleChange("category")}
           className="form-control"
@@ -154,7 +151,7 @@ const AddProduct = () => {
             ))}
         </select>
       </div>
-      <div className="form-group">
+      <div className="form-group my-1">
         <input
           onChange={handleChange("stock")}
           type="number"
@@ -167,7 +164,7 @@ const AddProduct = () => {
       <button
         type="submit"
         onClick={onSubmit}
-        className="btn btn-outline-success mb-3"
+        className="btn btn-outline-success mb-3 rounded mt-3"
       >
         Create Product
       </button>
@@ -175,11 +172,11 @@ const AddProduct = () => {
   );
   return (
     <Base
-      title="Add a product here!"
-      description="Welcome to product creation section"
+      title="Add a new t-shirt!"
+      description="All fields are required"
       className="container bg-info p-4"
     >
-      <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3">
+      <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3 rounded">
         Admin Home
       </Link>
       <div className="row bg-dark text-white rounded">

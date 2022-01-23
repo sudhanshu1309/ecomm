@@ -41,16 +41,26 @@ const Cart = () => {
   };
 
   return (
-    <Base title="Cart Page" description="Ready to checkout">
-      <div className="row text-center">
-        <div className="col-6">
+    <Base title="Cart" description="Ready to checkout">
+      <div className="row text-center text-info">
+        <div className="row col-md-4">
           {products.length > 0 ? (
             loadAllProducts(products)
           ) : (
-            <h3>NO products in cart</h3>
+            <h3 className="text-danger">
+              No item in your cart
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+              <br />
+            </h3>
           )}
         </div>
-        <div className="col-6">
+        <div className="col-4" />
+        <div className="col-sm-4">
           <PaymentB products={products} setReload={setReload} />
         </div>
       </div>

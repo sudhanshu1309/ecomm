@@ -129,7 +129,7 @@ const UpdateProduct = ({ match }) => {
     <form>
       <span>Post photo</span>
       <div className="form-group">
-        <label className="btn btn-block btn-success">
+        <label className="btn btn-block btn-success my-1 rounded">
           <input
             onChange={handleChange("photo")}
             type="file"
@@ -143,7 +143,7 @@ const UpdateProduct = ({ match }) => {
         <input
           onChange={handleChange("name")}
           name="photo"
-          className="form-control"
+          className="form-control my-1"
           placeholder="Name"
           value={name}
         />
@@ -152,7 +152,7 @@ const UpdateProduct = ({ match }) => {
         <textarea
           onChange={handleChange("description")}
           name="photo"
-          className="form-control"
+          className="form-control my-1"
           placeholder="Description"
           value={description}
         />
@@ -161,7 +161,7 @@ const UpdateProduct = ({ match }) => {
         <input
           onChange={handleChange("price")}
           type="number"
-          className="form-control"
+          className="form-control my-1"
           placeholder="Price"
           value={price}
         />
@@ -169,7 +169,7 @@ const UpdateProduct = ({ match }) => {
       <div className="form-group">
         <select
           onChange={handleChange("category")}
-          className="form-control"
+          className="form-control my-1"
           placeholder="Category"
         >
           <option>Select</option>
@@ -185,7 +185,7 @@ const UpdateProduct = ({ match }) => {
         <input
           onChange={handleChange("stock")}
           type="number"
-          className="form-control"
+          className="form-control my-1"
           placeholder="Quantity"
           value={stock}
         />
@@ -194,7 +194,7 @@ const UpdateProduct = ({ match }) => {
       <button
         type="submit"
         onClick={onSubmit}
-        className="btn btn-outline-success mb-3"
+        className="btn btn-outline-success mb-3 rounded "
       >
         Update Product
       </button>
@@ -206,7 +206,7 @@ const UpdateProduct = ({ match }) => {
       description="Welcome to product creation section"
       className="container bg-info p-4"
     >
-      <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3">
+      <Link to="/admin/dashboard" className="btn btn-md btn-dark mb-3 rounded">
         Admin Home
       </Link>
       <div className="row bg-dark text-white rounded">

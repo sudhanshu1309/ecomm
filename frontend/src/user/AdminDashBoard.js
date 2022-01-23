@@ -11,11 +11,11 @@ const AdminDashboard = () => {
   const adminLeftSide = () => {
     return (
       <div className="card">
-        <h4 className="card-header bg-dark text-white">Admin Navigation</h4>
+        <h4 className="card-header bg-dark text-light">Admin Navigation</h4>
         <ul className="list-group">
           <li className="list-group-item">
             <Link to="/admin/create/category" className="nav-link text-info">
-              Create Categories
+              Create Category
             </Link>
           </li>
           <li className="list-group-item">
@@ -29,15 +29,15 @@ const AdminDashboard = () => {
             </Link>
           </li>
           <li className="list-group-item">
-            <Link to="/admin/orders" className="nav-link text-info">
-              Manage Orders
-            </Link>
-          </li>
-          <li className="list-group-item">
             <Link to="/admin/products" className="nav-link text-info">
               Manage Products
             </Link>
           </li>
+          {/* <li className="list-group-item">
+            <Link to="/admin/orders" className="nav-link text-info">
+              Manage Orders
+            </Link>
+          </li> */}
         </ul>
       </div>
     );
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
   const adminRightSide = () => {
     return (
       <div className="card mb-4">
-        <h4 className="card-header">Admin Information</h4>
+        <h4 className="card-header text-info">Admin Information</h4>
         <ul className="list-group">
           <li className="list-group-item">
             <span className="badge badge-success mr-2 text-danger">Name:</span>{" "}
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
             {email}
           </li>
           <li className="list-group-item">
-            <span className="badge badge-success mr-2 text-danger">Role:</span>
+            <span className="badge badge-success mr-2 text-danger">Role: </span>
             {role ? "Admin" : "User"}
           </li>
         </ul>
@@ -67,13 +67,13 @@ const AdminDashboard = () => {
 
   return (
     <Base
-      title="Welcome to the admin area"
-      description="Manage all of your products here"
+      title="Welcome admin"
+      description="Manage store from here"
       className="container bg-success p-4"
     >
       <div className="row">
-        <div className="col-3">{adminLeftSide()}</div>
-        <div className="col-9">{adminRightSide()}</div>
+        <div className="col-4">{adminLeftSide()}</div>
+        <div className="col-8">{adminRightSide()}</div>
       </div>
     </Base>
   );
