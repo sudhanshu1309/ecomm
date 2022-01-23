@@ -9,9 +9,11 @@ router.post(
   [
     check("name")
       .isLength({ min: 3 })
-      .withMessage("must be at least 3 chars long"),
+      .withMessage("name must be at least 3 char long"),
     check("email").isEmail().withMessage("Email is required"),
-    check("password").isLength({ min: 5 }).withMessage("Minimum 5 char"),
+    check("password")
+      .isLength({ min: 5 })
+      .withMessage("Password should minimum 5 char"),
   ],
   signup
 );
