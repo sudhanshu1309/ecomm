@@ -18,7 +18,7 @@ MongoDB, Expressjs, React, Nodejs
 </p>
 
 ### Deployment site
-<a href="https://tshirtweb.netlify.app/" target="_blank">https://tshirtweb.netlify.app//</a>
+<a href="https://tshirtweb.netlify.app/" target="_blank">https://tshirtweb.netlify.app/</a>
 
 `t-shirt` is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
 
