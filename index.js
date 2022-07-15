@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 var cors = require("cors");
+const path = require("path");
 
 //my routes
 const authRoutes = require("./routes/auth");
