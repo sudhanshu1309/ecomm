@@ -27,19 +27,6 @@ app.use(cors());
 //   res.send("Welcome to the ROOT directory!");
 // });
 
-// serve static assets if in prodution
-if (process.env.NODE_ENVIRONMENT === "production") {
-  app.use(express.static("./frontend/build"));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
-}
-
-//starting server
-app.listen(port, () => {
-  console.log(`This app listening at http://localhost:${port}`);
-});
-
 //DB connection
 mongoose
   .connect(process.env.DATABASE, {
@@ -60,3 +47,16 @@ app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", orderRoutes);
 app.use("/api", paymentBRoutes);
+
+// serve static assets if in prodution
+if (process.env.NODE_ENVIRONMENT === "production") {
+  app.use(express.static("./frontend/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
+
+//starting server
+app.listen(port, () => {
+  console.log(`This app listening at http://localhost:${port}`);
+});
