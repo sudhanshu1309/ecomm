@@ -27,11 +27,14 @@ app.use(cors());
 //   res.send("Welcome to the ROOT directory!");
 // });
 
-app.use(express.static(path.join(__dirname, "build")));
+// serve static assets if in prodution
+if (process.env.NODE_ENVIRONMENT === "production") {
+  app.use(express.static("./frontend/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+  });
+}
 
-app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
-});
 //starting server
 app.listen(port, () => {
   console.log(`This app listening at http://localhost:${port}`);
