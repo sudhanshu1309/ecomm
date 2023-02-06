@@ -28,8 +28,12 @@ app.use(cors());
 // });
 
 //DB connection
+if (!process.env.MONGODB_URI) {
+  throw new Error('Invalid/Missing environment variable: "MONGODB_URI"');
+}
+const uri = process.env.MONGODB_URI;
 mongoose
-  .connect(process.env.DATABASE, {
+  .connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -51,7 +55,7 @@ app.use("/api", paymentBRoutes);
 // serve static assets if in prodution
 if (process.env.NODE_ENVIRONMENT === "production") {
   app.use(express.static("./frontend/build"));
-  app.get("*", (req, res) => {
+  app.get("*", (_req, res) => {
     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
   });
 }
