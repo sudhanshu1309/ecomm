@@ -18,7 +18,7 @@ MongoDB, Expressjs, React, Nodejs
 </p>
 
 ### Deployment site
-<a href="https://tshirtweb.herokuapp.com/" target="_blank">https://tshirtweb.herokuapp.com/</a>
+<a href="https://ecom-dha2.onrender.com/" target="_blank">https://ecom-dha2.onrender.com/</a>
 
 `t-shirt` is a fullstack implementation in MongoDB, Expressjs, React/Redux, Nodejs.
 
